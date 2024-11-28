@@ -1,0 +1,33 @@
+{
+  "manifest_version": 3,
+  "name": "Care Form Assistant",
+  "version": "1.0",
+  "description": "協助在 care.secom.com.tw 網站上複製和貼上表單內容",
+  "permissions": [
+    "storage",
+    "https://care.secom.com.tw/*",
+    "scripting",
+    "tabs"
+  ],
+  "host_permissions": [
+    "https://care.secom.com.tw/*"
+  ],
+  "browser_specific_settings": {
+    "edge": {
+      "browser_action_next_to_addressbar": true
+    }
+  },
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "*://*.care.secom.com.tw/*",
+        "*://care.secom.com.tw/*"
+      ],
+      "css": ["styles.css"],
+      "js": ["content.js"]
+    }
+  ]
+} 

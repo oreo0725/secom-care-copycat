@@ -1,0 +1,37 @@
+#care-control-panel {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  width: 100px;
+  height: 100px;
+  background: white;
+  border: 2px solid black;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  z-index: 2147483647;
+}
+
+.control-button {
+  width: 80%;
+  padding: 8px;
+  cursor: pointer;
+  border: 1px solid #ccc;
+  background: white;
+  transition: background-color 0.3s;
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.control-button:hover {
+  background: #f0f0f0;
+}
+
+.success-icon {
+  margin-left: 4px;
+  color: green;
+  font-size: 20px;
+} 

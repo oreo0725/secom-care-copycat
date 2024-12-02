@@ -5,18 +5,16 @@
   "description": "協助在 care.secom.com.tw 網站上複製和貼上表單內容",
   "permissions": [
     "storage",
-    "https://care.secom.com.tw/*",
     "scripting",
     "tabs"
   ],
+  "options_ui": {
+    "page": "options.html",
+    "open_in_tab": false
+  },
   "host_permissions": [
     "https://care.secom.com.tw/*"
   ],
-  "browser_specific_settings": {
-    "edge": {
-      "browser_action_next_to_addressbar": true
-    }
-  },
   "background": {
     "service_worker": "background.js"
   },
@@ -29,5 +27,8 @@
       "css": ["styles.css"],
       "js": ["content.js"]
     }
-  ]
+  ],
+  "icons": {
+    "128": "icon.svg"
+  }
 } 

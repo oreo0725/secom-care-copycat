@@ -2,7 +2,7 @@
   position: fixed;
   bottom: 20px;
   right: 20px;
-  width: 100px;
+  width: 120px;
   height: 100px;
   background: white;
   border: 2px solid black;
@@ -14,7 +14,7 @@
 }
 
 .control-button {
-  width: 80%;
+  width: 90%;
   padding: 8px;
   cursor: pointer;
   border: 1px solid #ccc;
@@ -24,6 +24,7 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
+  font-size: 12px;
 }
 
 .control-button:hover {

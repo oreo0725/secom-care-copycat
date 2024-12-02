@@ -153,6 +153,38 @@ const FIELD_GROUPS = {
       name: 'skin',
       items: ['#skin1', '#skin2']
     }
+  },
+  activities: {
+    emotional_state: {
+      type: 'radio',
+      name: 'emotional_state_group',
+      items: ['#emotional_state1', '#emotional_state2', '#emotional_state3'],
+      textInput: '#emotional_state4'
+    },
+    social_support_active: {
+      type: 'radio',
+      name: 'social_support_active_group',
+      items: ['#social_support_active2', '#social_support_active3'],
+      textInput: '#social_support_active4'
+    },
+    social_support_people: {
+      type: 'radio',
+      name: 'social_support_people_group',
+      items: ['#social_support_people1', '#social_support_people2'],
+      textInput: '#social_support_people3'
+    }
+  }
+};
+
+// 新增值映射關係
+const VALUE_MAPPINGS = {
+  emergency_button: {
+    '正確': '正常',
+    '不正確': '不正常'
+  },
+  cancel_button: {
+    '正確': '正常',
+    '不正確': '不正常'
   }
 };
 
@@ -349,35 +381,56 @@ async function handleCopy() {
   }
 }
 
-// 新增一個函數來處理貼上欄位數據
+// 修改 applyFieldData 函數
 async function applyFieldData(category, group, config, data) {
   if (!data) return;
   
   if (config.type === 'checkbox') {
-    // 先清除所有選中狀態
     config.items.forEach(async selector => {
       const element = await getElement(selector);
       if (element) {
-        element.checked = false;
-      }
-    });
-    
-    // 設置新的選中狀態
-    config.items.forEach(async selector => {
-      const element = await getElement(selector);
-      if (element && data.values.includes(element.value)) {
-        element.checked = true;
+        element.checked = data.values.includes(element.value);
       }
     });
   } else if (config.type === 'radio') {
-    const value = data.values[0]; // radio 只會有一個值
+    let value = data.values[0]; // radio 只會有一個值
     if (value) {
-      config.items.forEach(async selector => {
+      // 檢查是否需要值映射
+      if (VALUE_MAPPINGS[group] && VALUE_MAPPINGS[group][value]) {
+        value = VALUE_MAPPINGS[group][value];
+      }
+      
+      let selectedElement = null;
+      
+      // 先找到要選中的元素
+      for (const selector of config.items) {
         const element = await getElement(selector);
         if (element && element.value === value) {
-          element.checked = true;
+          selectedElement = element;
+          break;
         }
-      });
+      }
+      
+      if (selectedElement) {
+        // 如果找到了對應的元素
+        selectedElement.checked = true;
+        
+        // 特殊處理：emergency_button, cancel_button 等需要特殊邏輯的欄位
+        if (group === 'emergency_button' || group === 'cancel_button') {
+          // 如果選擇了"其他"，顯示文字輸入框
+          if (selectedElement.value === '其他') {
+            const textInput = await getElement(`${group}3_text`);
+            if (textInput) {
+              textInput.style.display = 'inline';
+            }
+          }
+          
+          // 觸發 onclick 事件以執行客製化邏輯
+          if (selectedElement.onclick) {
+            selectedElement.onclick();
+          }
+        }
+      }
     }
   } else if (config.type === 'textarea') {
     const element = await getElement(config.selector);
@@ -391,6 +444,11 @@ async function applyFieldData(category, group, config, data) {
     const textElement = await getElement(config.textInput);
     if (textElement) {
       textElement.value = data.other;
+      
+      // 特殊處理：確保文字輸入框可見
+      if (textElement.style) {
+        textElement.style.display = 'inline';
+      }
     }
   }
 }

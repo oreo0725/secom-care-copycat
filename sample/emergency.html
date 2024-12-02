@@ -1,0 +1,124 @@
+<div class="row">
+    <div id="title_confirmation" style="font-size: 20px;">
+        <div class="col-sm-12 col-xs-12" style="background-color: #008eac; color: white">
+            <label for="economic0" class="labfont">
+                功能確認</label></div>
+    </div>
+    <div id="confirmation" class="col-sm-12">
+        <div id="confirmation_context">
+            <div class="col-md-2 col-sm-3 col-xs-4">
+                <label class="labfont">
+                    <input type="checkbox" id="confirmation1" class="check_tp" name="confirmation" data-group="function_confirmation" data-seq="1" value="電源連線">電源連線</label></div>
+            <div class="col-md-2 col-sm-3 col-xs-4">
+                <label class="labfont">
+                    <input type="checkbox" id="confirmation2" class="check_tp" name="confirmation" data-group="function_confirmation" data-seq="2" value="連線測試">連線測試</label></div>
+            <div class="col-md-2 col-sm-3 col-xs-4">
+                <label class="labfont">
+                    <input type="checkbox" id="confirmation3" class="check_tp" name="confirmation" data-group="function_confirmation" data-seq="3" value="無線壓扣">無線壓扣</label></div>
+            <div class="col-md-2 col-sm-2 col-xs-4">
+                <label class="labfont">
+                    <input type="checkbox" id="confirmation4" class="check_tp" name="confirmation" data-group="function_confirmation" data-seq="4" value="PIR">PIR</label></div>
+            <div class="col-md-2 col-sm-2 col-xs-4">
+                <label class="labfont">
+                    <input type="checkbox" id="confirmation5" class="check_tp" name="confirmation" data-group="function_confirmation" data-seq="5" value="外訪">外訪</label></div>
+            <div class="col-md-2 col-sm-2 col-xs-4">
+                <label class="labfont">
+                    <input type="checkbox" id="confirmation6" class="check_tp" name="confirmation" data-group="function_confirmation" data-seq="6" value="電訪">電訪</label></div>
+        </div>
+    </div>
+    <div id="title_emergency_button" style="font-size: 20px;">
+        <div class="col-sm-12 col-xs-12" style="background-color: #008eac; color: white">
+            <label for="emergency_button0" class="labfont">
+                壓求救鍵</label></div>
+    </div>
+    <div id="emergency_button" class="col-sm-12 col-xs-12">
+        <div id="emergency_button_context">
+            <div class="col-md-2 col-sm-2 col-xs-4">
+                <label class="labfont">
+                    <input type="radio" id="emergency_button1" class="check_tp" name="emergency_button" data-group="emergency_button" data-seq="1" value="正確" onclick="check_emergency_button()">正確</label></div>
+            <div class="col-md-2 col-sm-3 col-xs-4">
+                <label class="labfont">
+                    <input type="radio" id="emergency_button2" class="check_tp" name="emergency_button" data-group="emergency_button" data-seq="2" value="不正確" onclick="check_emergency_button()" disabled="">不正確</label></div>
+            <div class="col-md-5 col-sm-6 col-xs-4">
+                <label class="labfont">
+                    <input type="radio" id="emergency_button3" class="check_tp" name="emergency_button" data-group="emergency_button" data-seq="3" value="其他" onclick="check_emergency_button()" disabled="">其他</label><input type="text" id="emergency_button3_text" data-group="emergency_button" data-seq="4" style="width: 150px; display: none;"></div>
+        </div>
+    </div>
+    <div id="title_cancel_button" style="font-size: 20px;">
+        <div class="col-sm-12 col-xs-12" style="background-color: #008eac; color: white">
+            <label for="cancel_button0" class="labfont">
+                壓取消鍵</label></div>
+    </div>
+    <div id="cancel_button" class="col-sm-12 col-xs-12">
+        <div id="cancel_button_context">
+            <div class="col-md-2 col-sm-2 col-xs-4">
+                <label class="labfont">
+                    <input type="radio" id="cancel_button1" class="check_tp" name="cancel_button" data-group="cancel_button" data-seq="1" value="正確" onclick="check_cancel_button()">正確</label></div>
+            <div class="col-md-2 col-sm-3 col-xs-4">
+                <label class="labfont">
+                    <input type="radio" id="cancel_button2" class="check_tp" name="cancel_button" data-group="cancel_button" data-seq="2" value="不正確" onclick="check_cancel_button()" disabled="">不正確</label></div>
+            <div class="col-md-5 col-sm-6 col-xs-4">
+                <label class="labfont">
+                    <input type="radio" id="cancel_button3" class="check_tp" name="cancel_button" data-group="cancel_button" data-seq="3" value="其他" onclick="check_cancel_button()" disabled="">其他</label><input type="text" id="cancel_button3_text" data-group="cancel_button" data-seq="4" style="width: 150px; display: none;"></div>
+        </div>
+    </div>
+    <div id="title_wearing_method" style="font-size: 20px;">
+        <div class="col-sm-12 col-xs-12" style="background-color: #008eac; color: white">
+            <label for="wearing_method0" class="labfont">
+                配戴方式</label></div>
+    </div>
+    <div id="wearing_method" class="col-sm-12 col-xs-12">
+        <div id="wearing_method_context">
+            <div class="col-md-3 col-sm-4 col-xs-6">
+                <label class="labfont">
+                    <input type="radio" id="wearing_method1" name="wearing_method" class="check_tp" data-group="wearing_method" data-seq="1" value="項鍊">項鍊</label></div>
+            <div class="col-md-9 col-sm-8 col-xs-6">
+                <label class="labfont">
+                    <input type="radio" id="wearing_method2" name="wearing_method" class="check_tp" data-group="wearing_method" data-seq="2" value="手鍊" disabled="">手鍊</label></div>
+            <div class="col-md-3 col-sm-4 col-xs-6">
+                <label class="labfont">
+                    <input type="radio" id="wearing_method3" name="wearing_method1" class="check_tp" data-group="wearing_method" data-seq="3" value="有配戴在身上" onclick="check_wearing_method()">有配戴在身上</label></div>
+            <div class="col-md-3 col-sm-4 col-xs-6">
+                <label class="labfont">
+                    <input type="radio" id="wearing_method4" name="wearing_method1" class="check_tp" data-group="wearing_method" data-seq="4" value="無配戴在身上" onclick="check_wearing_method()">無配戴在身上</label></div>
+            <div class="col-md-4 col-sm-6 col-xs-10">
+                <label id="wearing_method5_title" class="labfont" style="display: initial;">
+                    原因</label>
+                <input type="text" id="wearing_method5" name="wearing_method" data-group="wearing_method" data-seq="5" style="width: 150px; display: initial;">
+            </div>
+        </div>
+
+    </div>
+    <div id="function_others_title" style="font-size: 20px;">
+        <div class="col-md-12 col-sm-12 col-xs-12" style="background-color: #008eac; color: white">
+            <label class="labfont">
+                其他</label></div>
+    </div>
+        <div id="function_others_context" class="col-sm-12 col-xs-12">
+            <div class="col-md-2 col-sm-3 col-xs-4">
+                <label class="labfont">
+                    <input type="checkbox" id="function_others1" class="check_tp" name="function_others" data-group="function_others" data-seq="1" value="大壓扣">大壓扣</label></div>
+
+        </div>
+<!--                        <div id="title_skill" style="font-size: 20px;">
+        <div class="col-sm-12 col-xs-12" style="background-color: #008eac; color: white">
+            <label for="skill0" class="labfont">
+                熟練度</label></div>
+    </div>-->
+<!--                        <div id="skill" class="col-sm-12 col-xs-12">
+        <div id="skill_context">
+            <div class="col-md-2 col-sm-2 col-xs-4">
+                <label class="labfont">
+                    <input type="checkbox" id="skill1" class="check_tp" name="skill" data-group="skill"
+                        data-seq="1" value="熟練">熟練</label></div>
+            <div class="col-md-2 col-sm-2 col-xs-4">
+                <label class="labfont">
+                    <input type="checkbox" id="skill2" class="check_tp" name="skill" data-group="skill"
+                        data-seq="2" value="需協助">需協助</label></div>
+            <div class="col-md-2 col-sm-2 col-xs-4">
+                <label class="labfont">
+                    <input type="checkbox" id="skill3" class="check_tp" name="skill" data-group="skill"
+                        data-seq="3" value="其他">其他</label></div>
+        </div>
+    </div>-->
+</div>

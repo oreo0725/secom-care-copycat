@@ -1,110 +1,125 @@
-// 欄位的 XPath 定義
-const FIELD_MAPPINGS = {
-  residential: '#residential_level_text',
-  psychological: '#psychological_level_text',
-  health: '#health_level_text',
-  healthEducation: '#health_education_level_text',
-  specialMatters: '#special_matters_text'
-};
-
-// 新增欄位組定義
+// 欄位組定義
 const FIELD_GROUPS = {
-  awareness: {
-    type: 'checkbox',
-    items: ['#awareness1', '#awareness2', '#awareness3', '#awareness4', '#awareness5', '#awareness6'],
-    textInput: '#awareness6_text'
+  note: {
+    residential: {
+      type: 'textarea',
+      selector: '#residential_level_text'
+    },
+    psychological: {
+      type: 'textarea',
+      selector: '#psychological_level_text'
+    },
+    health: {
+      type: 'textarea',
+      selector: '#health_level_text'
+    },
+    healthEducation: {
+      type: 'textarea',
+      selector: '#health_education_level_text'
+    },
+    specialMatters: {
+      type: 'textarea',
+      selector: '#special_matters_text'
+    }
   },
-  circulation: {
-    type: 'checkbox',
-    items: ['#circulation1', '#circulation2', '#circulation3', '#circulation4'],
-    textInput: '#circulation4_text'
-  },
-  vision_left: {
-    type: 'radio',
-    name: 'visionleft',
-    items: ['#vision_left2', '#vision_left3', '#vision_left4', '#vision_left5'],
-    textInput: '#vision_left5_text'
-  },
-  vision_right: {
-    type: 'radio',
-    name: 'visionright',
-    items: ['#vision_right1', '#vision_right2', '#vision_right3', '#vision_right4'],
-    textInput: '#vision_right4_text'
-  },
-  hearing_left: {
-    type: 'radio',
-    name: 'hearingleft',
-    items: ['#hearing_left2', '#hearing_left3', '#hearing_left5', '#hearing_left6'],
-    textInput: '#hearing_left6_context'
-  },
-  hearing_right: {
-    type: 'radio',
-    name: 'hearingright',
-    items: ['#hearing_right1', '#hearing_right2', '#hearing_right4', '#hearing_right5'],
-    textInput: '#hearing_right5_context'
-  },
-  breathing: {
-    type: 'checkbox',
-    items: ['#breathing2', '#breathing3', '#breathing4']
-  },
-  breathing_type: {
-    type: 'checkbox',
-    items: ['#breathing_type1', '#breathing_type2', '#breathing_type3', '#breathing_type4', 
-            '#breathing_type5', '#breathing_type6', '#breathing_type7'],
-    textInput: '#breathing_type7_text'
-  },
-  eating_habits: {
-    type: 'checkbox',
-    items: ['#eating_habits1', '#eating_habits2', '#eating_habits3', '#eating_habits4', 
-            '#eating_habits5', '#eating_habits6', '#eating_habits7', '#eating_habits8', 
-            '#eating_habits9', '#eating_habits10', '#eating_habits11', '#eating_habits12'],
-    textInput: '#eating_habits12_text'
-  },
-  food_source: {
-    type: 'checkbox',
-    items: ['#food_source1', '#food_source2', '#food_source3', '#food_source4'],
-    textInput: '#food_source4_text'
-  },
-  excretion_urine: {
-    type: 'checkbox',
-    items: ['#excretion_urine2', '#excretion_urine3', '#excretion_urine4', 
-            '#excretion_urine5', '#excretion_urine6'],
-    textInput: '#excretion_urine6_text'
-  },
-  excretion_stool: {
-    type: 'checkbox',
-    items: ['#excretion_stool1', '#excretion_stool2', '#excretion_stool3', 
-            '#excretion_stool4', '#excretion_stool5', '#excretion_stool6'],
-    textInput: '#excretion_stool6_text'
-  },
-  activity: {
-    type: 'checkbox',
-    items: ['#activity1', '#activity2', '#activity3', '#activity4']
-  },
-  physical_disorder: {
-    type: 'checkbox',
-    items: ['#physical_disorder1', '#physical_disorder2', '#physical_disorder3', '#physical_disorder4']
-  },
-  activity_method: {
-    type: 'checkbox',
-    items: ['#activity_method1', '#activity_method2', '#activity_method3', 
-            '#activity_method4', '#activity_method5', '#activity_method6']
-  },
-  fall_down: {
-    type: 'radio',
-    name: 'fall_down',
-    items: ['#fall_down1', '#fall_down2']
-  },
-  special_event: {
-    type: 'radio',
-    name: 'special_event',
-    items: ['#special_event1', '#special_event2'],
-    textInput: '#special_event3'
-  },
-  skin: {
-    type: 'radio',
-    name: 'skin',
-    items: ['#skin1', '#skin2']
+  visit: {
+    awareness: {
+      type: 'checkbox',
+      items: ['#awareness1', '#awareness2', '#awareness3', '#awareness4', '#awareness5', '#awareness6'],
+      textInput: '#awareness6_text'
+    },
+    circulation: {
+      type: 'checkbox',
+      items: ['#circulation1', '#circulation2', '#circulation3', '#circulation4'],
+      textInput: '#circulation4_text'
+    },
+    vision_left: {
+      type: 'radio',
+      name: 'visionleft',
+      items: ['#vision_left2', '#vision_left3', '#vision_left4', '#vision_left5'],
+      textInput: '#vision_left5_text'
+    },
+    vision_right: {
+      type: 'radio',
+      name: 'visionright',
+      items: ['#vision_right1', '#vision_right2', '#vision_right3', '#vision_right4'],
+      textInput: '#vision_right4_text'
+    },
+    hearing_left: {
+      type: 'radio',
+      name: 'hearingleft',
+      items: ['#hearing_left2', '#hearing_left3', '#hearing_left5', '#hearing_left6'],
+      textInput: '#hearing_left6_context'
+    },
+    hearing_right: {
+      type: 'radio',
+      name: 'hearingright',
+      items: ['#hearing_right1', '#hearing_right2', '#hearing_right4', '#hearing_right5'],
+      textInput: '#hearing_right5_context'
+    },
+    breathing: {
+      type: 'checkbox',
+      items: ['#breathing2', '#breathing3', '#breathing4']
+    },
+    breathing_type: {
+      type: 'checkbox',
+      items: ['#breathing_type1', '#breathing_type2', '#breathing_type3', '#breathing_type4', 
+              '#breathing_type5', '#breathing_type6', '#breathing_type7'],
+      textInput: '#breathing_type7_text'
+    },
+    eating_habits: {
+      type: 'checkbox',
+      items: ['#eating_habits1', '#eating_habits2', '#eating_habits3', '#eating_habits4', 
+              '#eating_habits5', '#eating_habits6', '#eating_habits7', '#eating_habits8', 
+              '#eating_habits9', '#eating_habits10', '#eating_habits11', '#eating_habits12'],
+      textInput: '#eating_habits12_text'
+    },
+    food_source: {
+      type: 'checkbox',
+      items: ['#food_source1', '#food_source2', '#food_source3', '#food_source4'],
+      textInput: '#food_source4_text'
+    },
+    excretion_urine: {
+      type: 'checkbox',
+      items: ['#excretion_urine2', '#excretion_urine3', '#excretion_urine4', 
+              '#excretion_urine5', '#excretion_urine6'],
+      textInput: '#excretion_urine6_text'
+    },
+    excretion_stool: {
+      type: 'checkbox',
+      items: ['#excretion_stool1', '#excretion_stool2', '#excretion_stool3', 
+              '#excretion_stool4', '#excretion_stool5', '#excretion_stool6'],
+      textInput: '#excretion_stool6_text'
+    },
+    activity: {
+      type: 'checkbox',
+      items: ['#activity1', '#activity2', '#activity3', '#activity4']
+    },
+    physical_disorder: {
+      type: 'checkbox',
+      items: ['#physical_disorder1', '#physical_disorder2', '#physical_disorder3', '#physical_disorder4']
+    },
+    activity_method: {
+      type: 'checkbox',
+      items: ['#activity_method1', '#activity_method2', '#activity_method3', 
+              '#activity_method4', '#activity_method5', '#activity_method6']
+    },
+    fall_down: {
+      type: 'radio',
+      name: 'fall_down',
+      items: ['#fall_down1', '#fall_down2']
+    },
+    special_event: {
+      type: 'radio',
+      name: 'special_event',
+      items: ['#special_event1', '#special_event2'],
+      textInput: '#special_event3'
+    },
+    skin: {
+      type: 'radio',
+      name: 'skin',
+      items: ['#skin1', '#skin2']
+    }
   }
 };
 
@@ -130,6 +145,11 @@ async function collectFieldData(group, config) {
         data.values.push(element.value);
         break;
       }
+    }
+  } else if (config.type === 'textarea') {
+    const element = await getElement(config.selector);
+    if (element) {
+      data.values.push(element.value);
     }
   }
   
@@ -271,26 +291,18 @@ async function handleCopy() {
       return;
     }
 
-    // 收集原有欄位數據
-    const basicData = {
-      residential: (await getElement(FIELD_MAPPINGS.residential)).value,
-      psychological: (await getElement(FIELD_MAPPINGS.psychological)).value,
-      health: (await getElement(FIELD_MAPPINGS.health)).value,
-      specialMatters: (await getElement(FIELD_MAPPINGS.specialMatters)).value
-    };
-
-    // 收集新增欄位數據
-    const extendedData = {};
-    for (const [group, config] of Object.entries(FIELD_GROUPS)) {
-      extendedData[group] = await collectFieldData(group, config);
+    // 收集欄位數據
+    const data = {};
+    for (const category in FIELD_GROUPS) {
+      data[category] = {};
+      for (const [group, config] of Object.entries(FIELD_GROUPS[category])) {
+        data[category][group] = await collectFieldData(group, config);
+      }
     }
 
     await chrome.runtime.sendMessage({ 
       type: 'SAVE_COPIED_DATA', 
-      data: {
-        ...basicData,
-        ...extendedData
-      }
+      data
     });
 
     showSuccessIcon(document.querySelector('#care-control-panel button'));
@@ -305,7 +317,7 @@ async function handleCopy() {
 }
 
 // 新增一個函數來處理貼上欄位數據
-async function applyFieldData(group, config, data) {
+async function applyFieldData(category, group, config, data) {
   if (!data) return;
   
   if (config.type === 'checkbox') {
@@ -334,6 +346,11 @@ async function applyFieldData(group, config, data) {
         }
       });
     }
+  } else if (config.type === 'textarea') {
+    const element = await getElement(config.selector);
+    if (element) {
+      element.value = data.values[0];
+    }
   }
   
   // 處理文字輸入
@@ -356,30 +373,16 @@ async function handlePaste() {
 
     const data = response.data;
     
-    // 處理基本欄位
-    Object.entries(FIELD_MAPPINGS).forEach(async ([key, selector]) => {
-      try {
-        const element = await getElement(selector);
-        element.value = '';
-        
-        if (key === 'healthEducation') {
-          element.value = await getHealthEducationText();
-        } else {
-          element.value = data[key] || '';
+    // 處理欄位
+    for (const category in FIELD_GROUPS) {
+      for (const [group, config] of Object.entries(FIELD_GROUPS[category])) {
+        try {
+          await applyFieldData(category, group, config, data[category][group]);
+        } catch (error) {
+          alert(`處理 ${group} 欄位時發生錯誤: ${error.message}`);
         }
-      } catch (error) {
-        alert(error.message);
       }
-    });
-
-    // 處理新增欄位
-    Object.entries(FIELD_GROUPS).forEach(async ([group, config]) => {
-      try {
-        await applyFieldData(group, config, data[group]);
-      } catch (error) {
-        alert(`處理 ${group} 欄位時發生錯誤: ${error.message}`);
-      }
-    });
+    }
 
   } catch (error) {
     alert(error.message);
@@ -389,4 +392,4 @@ async function handlePaste() {
 // 當頁面加載完成時創建控制面板
 if (window.location.hostname === 'care.secom.com.tw') {
   createControlPanel();
-} 
+}

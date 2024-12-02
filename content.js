@@ -22,6 +22,39 @@ const FIELD_GROUPS = {
       selector: '#special_matters_text'
     }
   },
+  emergent: {
+    confirmation: {
+      type: 'checkbox',
+      items: ['#confirmation1', '#confirmation2', '#confirmation3', '#confirmation4', '#confirmation5', '#confirmation6']
+    },
+    emergency_button: {
+      type: 'radio',
+      name: 'emergency_button',
+      items: ['#emergency_button1', '#emergency_button2', '#emergency_button3'],
+      textInput: '#emergency_button3_text'
+    },
+    cancel_button: {
+      type: 'radio',
+      name: 'cancel_button',
+      items: ['#cancel_button1', '#cancel_button2', '#cancel_button3'],
+      textInput: '#cancel_button3_text'
+    },
+    wearing_method_type: {
+      type: 'radio',
+      name: 'wearing_method',
+      items: ['#wearing_method1', '#wearing_method2']
+    },
+    wearing_method_status: {
+      type: 'radio',
+      name: 'wearing_method1',
+      items: ['#wearing_method3', '#wearing_method4'],
+      textInput: '#wearing_method5'
+    },
+    function_others: {
+      type: 'checkbox',
+      items: ['#function_others1']
+    }
+  },
   visit: {
     awareness: {
       type: 'checkbox',

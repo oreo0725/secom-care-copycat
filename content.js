@@ -19,33 +19,29 @@ const FIELD_GROUPS = {
     items: ['#circulation1', '#circulation2', '#circulation3', '#circulation4'],
     textInput: '#circulation4_text'
   },
-  vision: {
-    left: {
-      type: 'radio',
-      name: 'visionleft',
-      items: ['#vision_left2', '#vision_left3', '#vision_left4', '#vision_left5'],
-      textInput: '#vision_left5_text'
-    },
-    right: {
-      type: 'radio',
-      name: 'visionright',
-      items: ['#vision_right1', '#vision_right2', '#vision_right3', '#vision_right4'],
-      textInput: '#vision_right4_text'
-    }
+  vision_left: {
+    type: 'radio',
+    name: 'visionleft',
+    items: ['#vision_left2', '#vision_left3', '#vision_left4', '#vision_left5'],
+    textInput: '#vision_left5_text'
   },
-  hearing: {
-    left: {
-      type: 'radio',
-      name: 'hearingleft',
-      items: ['#hearing_left2', '#hearing_left3', '#hearing_left5', '#hearing_left6'],
-      textInput: '#hearing_left6_context'
-    },
-    right: {
-      type: 'radio',
-      name: 'hearingright',
-      items: ['#hearing_right1', '#hearing_right2', '#hearing_right4', '#hearing_right5'],
-      textInput: '#hearing_right5_context'
-    }
+  vision_right: {
+    type: 'radio',
+    name: 'visionright',
+    items: ['#vision_right1', '#vision_right2', '#vision_right3', '#vision_right4'],
+    textInput: '#vision_right4_text'
+  },
+  hearing_left: {
+    type: 'radio',
+    name: 'hearingleft',
+    items: ['#hearing_left2', '#hearing_left3', '#hearing_left5', '#hearing_left6'],
+    textInput: '#hearing_left6_context'
+  },
+  hearing_right: {
+    type: 'radio',
+    name: 'hearingright',
+    items: ['#hearing_right1', '#hearing_right2', '#hearing_right4', '#hearing_right5'],
+    textInput: '#hearing_right5_context'
   },
   breathing: {
     type: 'checkbox',
@@ -69,27 +65,25 @@ const FIELD_GROUPS = {
     items: ['#food_source1', '#food_source2', '#food_source3', '#food_source4'],
     textInput: '#food_source4_text'
   },
-  excretion: {
-    urine: {
-      type: 'checkbox',
-      items: ['#excretion_urine2', '#excretion_urine3', '#excretion_urine4', 
-              '#excretion_urine5', '#excretion_urine6'],
-      textInput: '#excretion_urine6_text'
-    },
-    stool: {
-      type: 'checkbox',
-      items: ['#excretion_stool1', '#excretion_stool2', '#excretion_stool3', 
-              '#excretion_stool4', '#excretion_stool5', '#excretion_stool6'],
-      textInput: '#excretion_stool6_text'
-    }
+  excretion_urine: {
+    type: 'checkbox',
+    items: ['#excretion_urine2', '#excretion_urine3', '#excretion_urine4', 
+            '#excretion_urine5', '#excretion_urine6'],
+    textInput: '#excretion_urine6_text'
+  },
+  excretion_stool: {
+    type: 'checkbox',
+    items: ['#excretion_stool1', '#excretion_stool2', '#excretion_stool3', 
+            '#excretion_stool4', '#excretion_stool5', '#excretion_stool6'],
+    textInput: '#excretion_stool6_text'
   },
   activity: {
     type: 'checkbox',
-    items: ['#activity1', '#activity2', '#activity3', '#activity4'],
-    physical_disorder: {
-      type: 'checkbox',
-      items: ['#physical_disorder1', '#physical_disorder2', '#physical_disorder3', '#physical_disorder4']
-    }
+    items: ['#activity1', '#activity2', '#activity3', '#activity4']
+  },
+  physical_disorder: {
+    type: 'checkbox',
+    items: ['#physical_disorder1', '#physical_disorder2', '#physical_disorder3', '#physical_disorder4']
   },
   activity_method: {
     type: 'checkbox',
@@ -288,15 +282,7 @@ async function handleCopy() {
     // 收集新增欄位數據
     const extendedData = {};
     for (const [group, config] of Object.entries(FIELD_GROUPS)) {
-      if (config.type) {
-        extendedData[group] = await collectFieldData(group, config);
-      } else {
-        // 處理巢狀結構（如 vision 的 left/right）
-        extendedData[group] = {};
-        for (const [subGroup, subConfig] of Object.entries(config)) {
-          extendedData[group][subGroup] = await collectFieldData(`${group}_${subGroup}`, subConfig);
-        }
-      }
+      extendedData[group] = await collectFieldData(group, config);
     }
 
     await chrome.runtime.sendMessage({ 
@@ -389,19 +375,7 @@ async function handlePaste() {
     // 處理新增欄位
     Object.entries(FIELD_GROUPS).forEach(async ([group, config]) => {
       try {
-        if (config.type) {
-          // 直接處理單層欄位
-          await applyFieldData(group, config, data[group]);
-        } else {
-          // 處理巢狀結構（如 vision 的 left/right）
-          Object.entries(config).forEach(async ([subGroup, subConfig]) => {
-            await applyFieldData(
-              `${group}_${subGroup}`,
-              subConfig,
-              data[group]?.[subGroup]
-            );
-          });
-        }
+        await applyFieldData(group, config, data[group]);
       } catch (error) {
         alert(`處理 ${group} 欄位時發生錯誤: ${error.message}`);
       }

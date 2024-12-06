@@ -435,7 +435,12 @@ async function applyFieldData(category, group, config, data) {
   } else if (config.type === 'textarea') {
     const element = await getElement(config.selector);
     if (element) {
-      element.value = data.values[0];
+      // 特別處理 health_education_level_text
+      if (config.selector === '#health_education_level_text') {
+        element.value = await getHealthEducationText();
+      } else {
+        element.value = data.values[0];
+      }
     }
   }
   

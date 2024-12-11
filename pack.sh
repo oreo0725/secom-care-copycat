@@ -19,7 +19,8 @@ cp icon.png "$TMP_DIR/"
 cp README.md "$TMP_DIR/"
 
 # 創建 zip 檔案
-ZIP_NAME="${EXTENSION_NAME}_v${VERSION}.zip"
+mkdir -p build
+ZIP_NAME="build/${EXTENSION_NAME}_v${VERSION}.zip"
 cd "$TMP_DIR"
 zip -r "../$ZIP_NAME" ./*
 cd ..

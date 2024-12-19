@@ -5,7 +5,6 @@
   "description": "協助在 care.secom.com.tw 網站上複製和貼上表單內容",
   "permissions": [
     "storage",
-    "scripting",
     "tabs"
   ],
   "options_ui": {
@@ -31,4 +30,4 @@
   "icons": {
     "128": "icon.png"
   }
-} 
+}

@@ -419,7 +419,7 @@ async function applyFieldData(category, group, config, data) {
         if (group === 'emergency_button' || group === 'cancel_button') {
           // 如果選擇了"其他"，顯示文字輸入框
           if (selectedElement.value === '其他') {
-            const textInput = await getElement(`${group}3_text`);
+            const textInput = await getElement(config.textInput);
             if (textInput) {
               textInput.style.display = 'inline';
             }

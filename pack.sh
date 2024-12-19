@@ -21,6 +21,7 @@ cp README.md "$TMP_DIR/"
 # 創建 zip 檔案
 mkdir -p build
 ZIP_NAME="build/${EXTENSION_NAME}_v${VERSION}.zip"
+rm build/*.zip
 cd "$TMP_DIR"
 zip -r "../$ZIP_NAME" ./*
 cd ..

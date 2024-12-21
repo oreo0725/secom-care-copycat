@@ -1,11 +1,10 @@
 {
   "manifest_version": 3,
   "name": "SecomCare Copycat",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "協助在 care.secom.com.tw 網站上複製和貼上表單內容",
   "permissions": [
-    "storage",
-    "tabs"
+    "storage"
   ],
   "options_ui": {
     "page": "options.html",

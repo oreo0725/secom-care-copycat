@@ -32,4 +32,8 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
     });
     return true;
   }
-}); 
+
+  if (request.type === 'OPEN_OPTIONS_PAGE') {
+    chrome.runtime.openOptionsPage();
+  }
+});

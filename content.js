@@ -305,6 +305,14 @@ function createControlPanel() {
   pasteBtn.className = 'control-button';
   pasteBtn.onclick = handlePaste;
 
+  const optionsBtn = document.createElement('button');
+  optionsBtn.textContent = 'Options';
+  optionsBtn.className = 'control-button';
+  optionsBtn.title = '開啟設定';
+  optionsBtn.onclick = () => {
+    chrome.runtime.sendMessage({ type: 'OPEN_OPTIONS_PAGE' });
+  };
+
   const debugBtn = document.createElement('button');
   debugBtn.textContent = 'Show Data';
   debugBtn.className = 'control-button';
@@ -315,6 +323,7 @@ function createControlPanel() {
 
   panel.appendChild(copyBtn);
   panel.appendChild(pasteBtn);
+  panel.appendChild(optionsBtn);
   panel.appendChild(debugBtn);
   document.body.appendChild(panel);
 

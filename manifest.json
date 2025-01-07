@@ -26,10 +26,7 @@
       "js": ["content.js"]
     }
   ],
-  "icons": [
-    {
-      "size": 128,
-      "src": "icon.png"
-    }
-  ]
+  "icons": {
+    "128": "icon.png"
+  }
 }

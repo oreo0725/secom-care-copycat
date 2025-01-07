@@ -37,3 +37,7 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
     chrome.runtime.openOptionsPage();
   }
 });
+
+chrome.action.onClicked.addListener(() => {
+  chrome.tabs.create({ url: "https://care.secom.com.tw/" });
+});
